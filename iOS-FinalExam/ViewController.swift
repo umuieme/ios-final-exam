@@ -55,16 +55,14 @@ class ViewController: UIViewController, CocktailListFetchDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cocktailCell", for: indexPath)
-        print(indexPath.row)
-        print(cocktailList[indexPath.row].strDrink)
-        cell.textLabel?.text = cocktailList[indexPath.row].strDrink
-        ImageDownloader.downloadImage(imagePath: cocktailList[indexPath.row].strDrinkThumb) {error, imageData in
-            if let imageData = imageData {
-                cell.imageView?.image = UIImage(data: imageData)
-            }
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cocktailCell", for: indexPath) as! CocktailItemTableViewCell
+        
+        cell.setData(cocktail: cocktailList[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(100)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,5 +71,6 @@ class ViewController: UIViewController, CocktailListFetchDelegate, UITableViewDa
             cocktailDetailViewController.id = cocktailList[cocktailTableView.indexPathForSelectedRow!.row].idDrink
         }
     }
+    
 }
 
