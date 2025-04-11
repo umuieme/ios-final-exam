@@ -69,6 +69,7 @@ class ViewController: UIViewController, CocktailListFetchDelegate, UITableViewDa
         print(cocktailTableView.indexPathForSelectedRow!.row)
         if let cocktailDetailViewController =  segue.destination as? CocktailDetailViewController {
             cocktailDetailViewController.id = cocktailList[cocktailTableView.indexPathForSelectedRow!.row].idDrink
+            cocktailTableView.deselectRow(at: cocktailTableView.indexPathForSelectedRow!, animated: false)
         }
     }
     

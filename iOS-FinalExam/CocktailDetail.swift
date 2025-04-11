@@ -22,8 +22,8 @@ class CocktailDetail : Codable {
     let strCategory: String
     let strAlcoholic: String
     let strInstructions: String
-    let strInstructionsES: String
-    let strInstructionsDE: String
+    let strInstructionsES: String?
+    let strInstructionsDE: String?
     
     init(idDrink: String, strDrink: String, strDrinkThumb: String, strCategory: String, strAlcoholic: String, strInstructions: String, strInstructionsES: String, strInstructionsDE: String) {
         self.idDrink = idDrink
